@@ -1,0 +1,21 @@
+[
+    {
+        "projectPath": "actors\\Character",
+        "type": "kEvent",
+        "name": "SlowMotionStart"
+    },
+
+    {
+        "projectPath": "actors\\Character",
+        "type": "kFloat",
+        "name": "SlowMotionResetTimer",
+        "value": 0.3
+    },
+
+    {
+        "projectPath": "actors\\Character",
+        "type": "kFloat",
+        "name": "SlowMotionRatio",
+        "value": 0.2
+    }
+]
