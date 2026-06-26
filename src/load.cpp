@@ -33,13 +33,3 @@ SKSEPluginLoad(const SKSE::LoadInterface *skse) {
 
     return true;
 }
-
-SKSEPluginInfo(
-    .Version = REL::Version{ 1, 1, 0, 0 },
-    .Name = "ConvenientSlowMotion"sv,
-    .Author = "AnArchos"sv,
-    .SupportEmail = "patreon.com/AnArchos"sv,
-    .StructCompatibility = SKSE::StructCompatibility::Independent,
-    .RuntimeCompatibility = SKSE::VersionIndependence::AddressLibrary,
-    .MinimumSKSEVersion = REL::Version{ 2, 0, 0, 2 }
-)

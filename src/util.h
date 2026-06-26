@@ -85,18 +85,20 @@ namespace ManipulateUtil
 
         static void SetTimeMultImpl(const float a_rate, const float a_duration = -1.f, const bool a_resetToDefault = false) //credits to https://github.com/Pentalimbed
         {
-            REL::Relocation<float*> time_mult_1{REL::VariantID(511883, 388443, 0x1EC569C)}; //{REL::VariantID(511882, 388442, 0x1EC5698)};
-        //    REL::Relocation<float*> time_mult_2{REL::VariantID(511883, 388443, 0x1EC569C)};
-            *time_mult_1 *= a_rate;
-        //    *time_mult_2 = *time_mult_1;
+            RE::BSTimer::GetSingleton()->SetGlobalTimeMultiplier(a_rate, false);
+    //        REL::Relocation<float*> time_mult_1{REL::VariantID(511883, 388443, 0x1EC569C)}; //{REL::VariantID(511882, 388442, 0x1EC5698)};
+    //    //    REL::Relocation<float*> time_mult_2{REL::VariantID(511883, 388443, 0x1EC569C)};
+    //        *time_mult_1 *= a_rate;
+    //    //    *time_mult_2 = *time_mult_1;
 
             if (a_duration > 0.f) {
                 std::jthread slowtime_thread([=](){
                     std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(a_duration * 1000.0f)));
-                    *time_mult_1 /= a_rate;
-                    if (*time_mult_1 > 1.f || a_resetToDefault)
-                        *time_mult_1 = 1.f;
-                //    *time_mult_2 = *time_mult_1;
+                    RE::BSTimer::GetSingleton()->SetGlobalTimeMultiplier(1.f, false);
+            //        *time_mult_1 /= a_rate;
+            //        if (*time_mult_1 > 1.f || a_resetToDefault)
+            //            *time_mult_1 = 1.f;
+            //    //    *time_mult_2 = *time_mult_1;
                 });
                 slowtime_thread.detach();
             }
